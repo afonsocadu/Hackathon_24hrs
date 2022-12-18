@@ -1,0 +1,217 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Mood</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+
+	
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header" class="alt">
+						<span class="logo"><a href="index.html"><img src="images/logo.png" alt="" /></a></span>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul>
+							<li><a href="#aboutus" class="active">About us</a></li>
+							<li><a href="plan.html" class="active">Subscription</a></li>
+							<li><a href="#reviews" class="active">Reviews</a></li>
+							<li><a href="#goContact" class="active">Contact Us</a></li>
+							<li><a href="cart.html" class="active" id="viewCartNum">Shopping Cart [0]</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- First Section -->
+							<section id="first" class="main special">
+								<header class="major">
+									<h2 id="tituloCategoria"></h2>
+								</header>
+								<ul class="features" id="elementosBebidas">
+								</ul>
+							</section>
+
+							<section class="main special" style="padding-top: 65px;">
+								<button id="my-button" style="border: solid 2px; font-size: 20px;">Change your mood!</button>
+								
+							</section>
+							
+					</div>
+					
+
+					<footer id="footer">
+						
+						<section id="goContact">
+							<h2>Contact</h2>
+							<dl class="alt">
+								<dt>Address</dt>
+								<dd>Hipercentro Aerosa &bull; Portugal</dd>
+								<dt>Members</dt>
+								<dd>Carlos Eduardo, David Frutuoso, Joana Santos, José Matos, Paula Santos, Pedro V</dd>
+								<dt>Email</dt>
+								<dd>hackaton2022@academiadecodigo.org</dd>
+							</dl>
+		
+					
+					</footer>
+
+			</div>
+
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+
+
+			<script>
+
+				var arrHappy = [
+				14107,
+				15841,
+				13621
+				]
+
+				var arrSad = [
+				12738,
+				17250,
+				17241
+				] 
+
+				var arrHyped = [
+				17108,
+				16485,
+				14610
+				] 
+
+				var arrLonely = [
+				178345,
+				11766,
+				17830
+				]
+
+				var arrChristmas = [
+				14195,
+				12988,
+				12188
+				] 
+				
+				var arrCodeBreak = [
+					//  TODO reveer codigo para manual beer
+
+				]
+
+				var apresentarBebiddas =  function (data) {
+			/*var elemento  = 	'<li>' +
+										'<a href="#" ' +
+										'class="icon solid major style1 fa fa-smile-o" id="happy" ></a>' +
+										'<h3>' + data.drinks[0].strDrink + '</h3>' +
+									'</li>';*/
+
+									var elemento  = 	'<li>' +
+										'<a href=drink.html?id=' + data.drinks[0].idDrink + '><img src="' + data.drinks[0].strDrinkThumb + '" class="icon solid major style1"  style="width: 300px; height: 300px;">' +
+										'<h3>' + data.drinks[0].strDrink + '</h3></a>' +
+									'</li>';
+
+$( "#elementosBebidas" ).append(elemento);
+				
+
+				}
+				
+				var categoria = window.location.href.split("=")[1].split("#")[0];
+
+				var url = "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=";
+
+
+				if (categoria == "happy") {
+					$( "#tituloCategoria" ).append("Feeling Good");
+					for(var i = 0; i < arrHappy.length; i++) {
+						fetch(url + arrHappy[i])
+						.then((response) => response.json())
+						.then((data) => apresentarBebiddas(data));
+
+					}
+				} else if (categoria == "sad") {
+					$( "#tituloCategoria" ).append("Down and Out");
+					for(var i = 0; i < arrSad.length; i++) {
+						fetch(url + arrSad[i])
+						.then((response) => response.json())
+						.then((data) => apresentarBebiddas(data));
+
+					}
+				} else if (categoria == "hyped") {
+					$( "#tituloCategoria" ).append("Hype Beast!");
+					for(var i = 0; i < arrHyped.length; i++) {
+						fetch(url + arrHyped[i])
+						.then((response) => response.json())
+						.then((data) => apresentarBebiddas(data));
+
+					}
+} else if (categoria == "lonely") {
+	$( "#tituloCategoria" ).append("Forever alone");
+	for(var i = 0; i < arrLonely.length; i++) {
+						fetch(url + arrLonely[i])
+						.then((response) => response.json())
+						.then((data) => apresentarBebiddas(data));
+
+					}
+} else if (categoria == "christmas") {
+	$( "#tituloCategoria" ).append("It's Christmas Time!");
+	for(var i = 0; i < arrChristmas.length; i++) {
+						fetch(url + arrChristmas[i])
+						.then((response) => response.json())
+						.then((data) => apresentarBebiddas(data));
+
+					}
+				} else if (categoria == "codebreak") {
+					$( "#tituloCategoria" ).append("&lt;Code Break&gt;");
+					for(var i = 0; i < arrCodeBreak.length; i++) {
+						fetch(url + arrCodeBreak[i])
+						.then((response) => response.json())
+						.then((data) => apresentarBebiddas(data));
+					}
+
+
+					var elemento  = 	'<li>' +
+										'<a href=beer.html><img src="images/beer.jpeg" class="icon solid major style1"  style="width: 300px; height: 300px;">' +
+										'<h3>Beer</h3></a>' +
+									'</li>';
+
+$( "#elementosBebidas" ).append(elemento);
+
+$( "#elementosBebidas" ).append(elemento);
+
+$( "#elementosBebidas" ).append(elemento);
+
+} 
+				 
+window.location.href = "#first";
+
+				
+$( "#my-button" ).click(function() {
+	window.location.href = "index.html#first";
+});
+
+var onLoadCartNum = localStorage.getItem('myCart').split(";").length;
+						$("#viewCartNum").text("Shopping Cart ["+ onLoadCartNum + "]");
+				</script>
+				  
+
+	</body>
+</html>

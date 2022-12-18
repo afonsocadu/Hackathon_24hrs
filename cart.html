@@ -1,0 +1,132 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Mood</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+
+	
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header" class="alt">
+						<span class="logo"><a href="index.html"><img src="images/logo.png" alt="" /></a></span>
+					</header>
+
+				<!-- Nav -->
+					<nav id="nav">
+						<ul>
+							<li><a href="index.html#aboutus" class="active">About us</a></li>
+							<li><a href="plan.html" class="active">Subscription</a></li>
+							<li><a href="index.html#reviews" class="active">Reviews</a></li>
+							<li><a href="#goContact" class="active">Contact Us</a></li>
+							<li><a href="cart.html" class="active" id="viewCartNum">Shopping Cart [0]</a></li>
+						</ul>
+					</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- First Section -->
+							<section id="first" class="main special">
+								<header class="major">
+									<h2 id="tituloDrink">Cart</h2>
+								</header>
+
+                                <ul class="features" id="itemsProductsvsPrice">
+                                    <li id="itemName">
+                                        <h4><b>Drink:</b></h4><br>
+                                    </li>
+                                    <li id="itemPrice">
+                                        <h4><b>Price:</b></h4>
+                                    </li>										
+                                </ul>
+
+
+                                
+                                <div class="col-12">
+                                <form>         
+                                    <input type=“submit” value=>          
+                                    <label for=“name”>Name</label><br>
+                                    <input type=“number” id=“amount” name=“amount”><br>
+                                    <label for=“mbway”>MB Way</label><br>
+                                    <input type=“radio” id=“mbway” name=“payment” value=>
+                                    <label for=“credit-card”>Credit Card</label><br>
+                                    <input type=“radio” id=“bank-transfer” name=“payment” value=>
+                                    <label for=“bank-transfer”>Transfer</label>
+                                  </form>
+                                </div>
+
+							</section>
+
+
+							<section class="main special" style="padding-top: 65px;">
+							   <button id="btnAddCart" style="border: solid 2px; font-size: 20px;">Pay </button>
+							</section>
+
+
+					</div>
+					
+
+					<footer id="footer">
+						
+						<section id="goContact">
+							<h2>Contact</h2>
+							<dl class="alt">
+								<dt>Address</dt>
+								<dd>Hipercentro Aerosa &bull; Portugal</dd>
+								<dt>Members</dt>
+								<dd>Carlos Eduardo, David Frutuoso, Joana Santos, José Matos, Paula Santos, Pedro V</dd>
+								<dt>Email</dt>
+								<dd>hackaton2022@academiadecodigo.org</dd>
+							</dl>
+		
+					
+					</footer>
+
+			</div>
+
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+
+
+			<script>
+
+					var onLoadCartNum = localStorage.getItem('myCart').split(";").length;
+					$("#viewCartNum").text("Shopping Cart ["+ onLoadCartNum + "]");
+
+                    var products = localStorage.getItem('myCart').split(";");
+
+                    for(var i = 0; i < products.length - 1; i++) {
+                     
+                        var htmlAInjetar = '<ul class="features"><li><h4>' + products[i]  + '</h4></li>' +
+'<li><h4>19.99€</h4> </li>	</ul>';
+
+
+                        $("#itemsProductsvsPrice").append(htmlAInjetar);
+                    }
+
+                    $( "#btnAddCart" ).click(function() {
+                        localStorage.clear();
+                	window.location.href = "checkout.html";
+                     });
+				</script>
+				
+              
+
+	</body>
+</html>

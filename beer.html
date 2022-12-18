@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Mood</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="assets/css/main.css" />
+	</head>
+	<body class="is-preload">
+
+	
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header" class="alt">
+						<span class="logo"><a href="index.html"><img src="images/logo.png" alt="" /></a></span>
+					</header>
+
+				<!-- Nav -->
+				<nav id="nav">
+					<ul>
+						<li><a href="index.html#aboutus" class="active">About us</a></li>
+						<li><a href="plan.html" class="active">Subscription</a></li>
+						<li><a href="index.html#reviews" class="active">Reviews</a></li>
+						<li><a href="#goContact" class="active">Contact Us</a></li>
+						<li><a href="cart.html" class="active" id="viewCartNum">Shopping Cart [0]</a></li>
+					</ul>
+				</nav>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- First Section -->
+							<section id="first" class="main special">
+								<header class="major">
+									<h2 id="tituloDrink">Beer</h2>
+								</header>
+
+                                <ul class="features">
+                                    <li id="imgColn">
+                                        <img src="images/beer.jpeg" class="icon solid major style1" style="width: 350px; height: 350px;" />
+									</li>
+                                    <li id="elementosBebidas">
+                                        <h4><b>Ingredients:</b></h4>
+                                        &#8226; Dude...It's Beer!
+                                        
+										
+                                    </ul>
+
+							</section>
+
+							<section class="main special" style="padding-top: 65px;">
+                               <button id="my-button" style="border: solid 2px; font-size: 20px;">Change your drink!</button>
+							   <button id="btnAddCart" style="border: solid 2px; font-size: 20px;">Add to cart (19.99€)</button>
+							</section>
+					</div>
+					
+
+					<footer id="footer">
+						
+						<section id="goContact">
+							<h2>Contact</h2>
+							<dl class="alt">
+								<dt>Address</dt>
+								<dd>Hipercentro Aerosa &bull; Portugal</dd>
+								<dt>Members</dt>
+								<dd>Carlos Eduardo, David Frutuoso, Joana Santos, José Matos, Paula Santos, Pedro V</dd>
+								<dt>Email</dt>
+								<dd>hackaton2022@academiadecodigo.org</dd>
+							</dl>
+		
+					
+					</footer>
+
+			</div>
+
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+				  
+            <script>
+                $( "#my-button" ).click(function() {
+                    history.go(-1);
+                    });
+
+					$( "#btnAddCart" ).click(function() {
+						var cart;
+						var numCart = 0;
+
+								if(localStorage.getItem('myCart') != null) {
+								    cart = localStorage.getItem('myCart');
+
+									numCart = cart.split(";").length;
+
+									cart += "Beer" + ";";
+									localStorage.setItem('myCart', cart);
+								} else {
+									numCart++;
+									cart = "Beer" + ";";
+									localStorage.setItem('myCart', cart);
+								}
+
+								$("#viewCartNum").text("Shopping Cart ["+ numCart + "]");
+							
+                    });
+
+					var onLoadCartNum = localStorage.getItem('myCart').split(";").length;
+					$("#viewCartNum").text("Shopping Cart ["+ onLoadCartNum + "]");
+                </script>
+	</body>
+</html>
